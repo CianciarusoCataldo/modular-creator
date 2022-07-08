@@ -1,3 +1,5 @@
+export { default as initModularEngine } from "./api/engine/init";
+
 export { createModularApp } from "./app/init";
 
 export { AppConfig } from "./app/types";

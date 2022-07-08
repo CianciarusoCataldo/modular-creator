@@ -71,7 +71,6 @@
     "build:styles": "postcss --config config/postcss.config.js src/assets/styles/styles.css -o src/assets/styles/styles.output.css  --verbose",
     "watch:styles": "chokidar 'src/**/*.css' --ignore src/assets/styles/styles.output.css -c 'npm run build:styles'",
     "prebuild": "cross-env NODE_ENV=production npm run build:styles",
-    "postbuild": "gzipper compress ./build ./gzipped ./out && rm -rf ./build ",
     "build": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=false react-scripts build",
     "prestart": "cross-env NODE_ENV=development npm run build:styles",
     "start:app": "cross-env NODE_ENV=development GENERATE_SOURCEMAP=false react-scripts start",

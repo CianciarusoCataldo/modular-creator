@@ -1,17 +1,15 @@
 import { initEngine, ModularEngineConfig } from "modular-engine";
 
-import { printDev } from "../../app/utils";
 import { closeDrawer, openDrawer } from "../actions";
 
 const initModularEngine = (config?: ModularEngineConfig) => {
-  let engineConfig: ModularEngineConfig = {};
+  let engineConfig: ModularEngineConfig = config || {};
 
-  let reduxConfig = engineConfig.redux || { customize: {} };
+  const reduxConfig = engineConfig.redux || { customize: {} };
 
   let customize = reduxConfig.customize || {};
 
-  reduxConfig.customize = {
-    ...customize,
+  const addons = {
     ui: {
       state: {
         isDrawerOpen: false,
@@ -19,7 +17,6 @@ const initModularEngine = (config?: ModularEngineConfig) => {
       effects: {
         [closeDrawer.type]: (state, action) => ({
           ...state,
-          isDrawerOpen: false,
         }),
         [openDrawer.type]: (state, action) => ({
           ...state,
@@ -28,6 +25,20 @@ const initModularEngine = (config?: ModularEngineConfig) => {
       },
     },
   };
+
+  Object.keys(addons).forEach((addon) => {
+    if (customize[addon]) {
+      const customState = customize[addon].state || {};
+      const customEffects = customize[addon].effects || {};
+
+      customize[addon].state = { ...customState, ...addons[addon].state };
+      customize[addon].effects = { ...customEffects, ...addons[addon].effects };
+    } else {
+      customize[addon] = addons[addon];
+    }
+  });
+
+  reduxConfig.customize = customize;
 
   engineConfig.redux = reduxConfig;
 

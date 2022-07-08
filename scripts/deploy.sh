@@ -1,3 +1,3 @@
 #!/bin/sh
 
-gh-pages -d playground/gzipped
+gh-pages -d playground/build

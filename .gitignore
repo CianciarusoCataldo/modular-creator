@@ -101,6 +101,6 @@ dist
 
 node_modules
 dist
-playground/src/modular-preview
+playground/src/modular-creator-preview
 build
 coverage
