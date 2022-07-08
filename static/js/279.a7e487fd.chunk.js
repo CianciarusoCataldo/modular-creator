@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmodular_creator_app=self.webpackChunkmodular_creator_app||[]).push([[279],{279:function(r,a,e){e.r(a);var t=e(4786),u=e(529),n=e(6417);a.default=function(){var r=(0,t.driveWithDarkMode)(u.W2);return(0,n.jsx)(r,{animated:!0,unstyled:!0,children:(0,n.jsx)("div",{})})}}}]);
