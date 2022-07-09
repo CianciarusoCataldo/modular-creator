@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "https://cianciarusocataldo.github.io/modular-creator/static/css/main.9927006a.css",
-    "main.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/main.a64120ce.js",
+    "main.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/main.40e8072e.js",
     "static/js/637.6c818730.chunk.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/637.6c818730.chunk.js",
     "static/js/786.565d6126.chunk.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/786.565d6126.chunk.js",
-    "static/js/15.2762f9be.chunk.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/15.2762f9be.chunk.js",
+    "static/js/15.c143b6dd.chunk.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/15.c143b6dd.chunk.js",
     "static/js/168.ffc8c05e.chunk.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/168.ffc8c05e.chunk.js",
     "static/js/279.92380470.chunk.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/279.92380470.chunk.js",
     "static/js/778.1f8368c6.chunk.js": "https://cianciarusocataldo.github.io/modular-creator/static/js/778.1f8368c6.chunk.js",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.9927006a.css",
-    "static/js/main.a64120ce.js"
+    "static/js/main.40e8072e.js"
   ]
 }
