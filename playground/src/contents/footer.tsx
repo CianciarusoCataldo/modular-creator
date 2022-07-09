@@ -5,14 +5,14 @@ const FooterContent = () => {
         <img
           alt=""
           className="p-1"
-          src="https://img.shields.io/github/license/cianciarusocataldo/modular-creator"
+          src="https://img.shields.io/github/license/cianciarusocataldo/modular-creator?style=for-the-badge"
           height="25"
         />
 
         <img
           alt=""
           className="p-1"
-          src="https://img.shields.io/github/package-json/v/modular-creator?label=latest%20version"
+          src="https://img.shields.io/npm/v/modular-creator?color=orange%20&label=Latest%20version&style=for-the-badge&logo=npm"
           height="25"
         />
       </div>
