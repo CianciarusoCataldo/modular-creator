@@ -18,36 +18,10 @@ if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
 let engineConfig: Record<string, any> = {};
 
 const engineParameters = import("engine.config").then(({ default: input }) => {
-  return import("modular-engine").then(({ initEngine }) => {
+  return import("modular-creator-preview").then(({ initModularEngine }) => {
     engineConfig = input;
-
-    return import("modular-plugins").then(
-      ({
-        modalPlugin,
-        uiPlugin,
-        themerPlugin,
-        routerPlugin,
-        localizationPlugin,
-        urlCheckerPlugin,
-        epicsPlugin,
-      }) => {
-        engineConfig.plugins = (engineConfig.plugins || []).concat([
-          modalPlugin,
-          uiPlugin,
-          themerPlugin,
-          routerPlugin,
-          localizationPlugin,
-          urlCheckerPlugin,
-          epicsPlugin,
-        ]);
-
-        const engineParams = initEngine({ config: engineConfig });
-
-        return {
-          ...engineParams,
-        };
-      }
-    );
+    const engineParams = initModularEngine(engineConfig);
+    return engineParams;
   });
 });
 
@@ -55,9 +29,11 @@ const creatorConfig = import("app.config").then(
   ({ default: config }) => config
 );
 
-const createApp = import("modular-creator-preview").then(({ createModularApp }) => {
-  return createModularApp;
-});
+const createApp = import("modular-creator-preview").then(
+  ({ createModularApp }) => {
+    return createModularApp;
+  }
+);
 
 const renderFuntion = async () => {
   const ModularApp = (await createApp)({

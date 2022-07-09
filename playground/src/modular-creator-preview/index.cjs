@@ -2,14 +2,33 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var modularEngine = require('modular-engine');
+var modularUtils = require('modular-utils');
 var React = require('react');
 var reactRedux = require('react-redux');
 var modularPlugins = require('modular-plugins');
 var modularUiComponents = require('modular-ui-components');
 var reactRouterDom = require('react-router-dom');
-var modularUtils = require('modular-utils');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+function _interopNamespace(e) {
+    if (e && e.__esModule) return e;
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
+        });
+    }
+    n["default"] = e;
+    return Object.freeze(n);
+}
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
@@ -53,6 +72,70 @@ var __assign = function() {
         return t;
     };
     return __assign.apply(this, arguments);
+};
+
+/**
+ * Open modular-engine drawer
+ *
+ * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
+ *
+ * @copyright Cataldo Cianciaruso 2022
+ */
+var openDrawer = modularUtils.createModularAction("@@ui/OPEN_DRAWER");
+/**
+ * Close modular-engine drawer
+ *
+ */
+var closeDrawer = modularUtils.createModularAction("@@ui/CLOSE_DRAWER");
+
+var initModularEngine = function (config) {
+    var _a;
+    var engineConfig = config || {};
+    var reduxConfig = engineConfig.redux || { customize: {} };
+    var customize = reduxConfig.customize || {};
+    var addons = {
+        ui: {
+            state: {
+                isDrawerOpen: false,
+            },
+            effects: (_a = {},
+                _a[closeDrawer.type] = function (state, action) { return (__assign({}, state)); },
+                _a[openDrawer.type] = function (state, action) { return (__assign(__assign({}, state), { isDrawerOpen: true })); },
+                _a),
+        },
+    };
+    Object.keys(addons).forEach(function (addon) {
+        if (customize[addon]) {
+            var customState = customize[addon].state || {};
+            var customEffects = customize[addon].effects || {};
+            customize[addon].state = __assign(__assign({}, customState), addons[addon].state);
+            customize[addon].effects = __assign(__assign({}, customEffects), addons[addon].effects);
+        }
+        else {
+            customize[addon] = addons[addon];
+        }
+    });
+    reduxConfig.customize = customize;
+    engineConfig.redux = reduxConfig;
+    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('modular-plugins')); }).then(function (_a) {
+        var modalPlugin = _a.modalPlugin, uiPlugin = _a.uiPlugin, localizationPlugin = _a.localizationPlugin, themerPlugin = _a.themerPlugin, routerPlugin = _a.routerPlugin, urlCheckerPlugin = _a.urlCheckerPlugin, epicsPlugin = _a.epicsPlugin;
+        var plugins = engineConfig.plugins || [];
+        plugins = plugins.concat([
+            modalPlugin,
+            uiPlugin,
+            localizationPlugin,
+            themerPlugin,
+            routerPlugin,
+            urlCheckerPlugin,
+            epicsPlugin,
+        ]);
+        engineConfig.plugins = plugins;
+        var _b = modularEngine.initEngine({ config: engineConfig }), store = _b.store, output = _b.config;
+        return {
+            store: store,
+            config: output,
+        };
+    });
 };
 
 /**
@@ -143,20 +226,6 @@ var ErrorBoundary = /** @class */ (function (_super) {
     };
     return ErrorBoundary;
 }(React__default["default"].Component));
-
-/**
- * Open modular-engine drawer
- *
- * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
- *
- * @copyright Cataldo Cianciaruso 2022
- */
-var openDrawer = modularUtils.createModularAction("@@ui/OPEN_DRAWER");
-/**
- * Close modular-engine drawer
- *
- */
-var closeDrawer = modularUtils.createModularAction("@@ui/CLOSE_DRAWER");
 
 /**
  * Returns modular-engine drawer visibility
@@ -283,5 +352,6 @@ var createModularApp = function (_a) {
 exports.closeDrawer = closeDrawer;
 exports.createModularApp = createModularApp;
 exports.driveWithDarkMode = driveWithDarkMode;
+exports.initModularEngine = initModularEngine;
 exports.isDrawerOpen = isDrawerOpen;
 exports.openDrawer = openDrawer;

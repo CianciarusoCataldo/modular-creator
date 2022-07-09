@@ -1,9 +1,10 @@
-/* eslint-disable */import React from 'react';
+/* eslint-disable */import { initEngine } from 'modular-engine';
+import { createModularAction, createModularSelector } from 'modular-utils';
+import React from 'react';
 import { useSelector, useDispatch, Provider } from 'react-redux';
 import { isInDarkMode, getModalType, isModalVisible, closeModal, getRoutes, getHomePage, getUIView } from 'modular-plugins';
 import { Modal, Container, Button, Drawer } from 'modular-ui-components';
 import { Router, Switch, Route, Redirect } from 'react-router-dom';
-import { createModularAction, createModularSelector } from 'modular-utils';
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -45,6 +46,70 @@ var __assign = function() {
         return t;
     };
     return __assign.apply(this, arguments);
+};
+
+/**
+ * Open modular-engine drawer
+ *
+ * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
+ *
+ * @copyright Cataldo Cianciaruso 2022
+ */
+var openDrawer = createModularAction("@@ui/OPEN_DRAWER");
+/**
+ * Close modular-engine drawer
+ *
+ */
+var closeDrawer = createModularAction("@@ui/CLOSE_DRAWER");
+
+var initModularEngine = function (config) {
+    var _a;
+    var engineConfig = config || {};
+    var reduxConfig = engineConfig.redux || { customize: {} };
+    var customize = reduxConfig.customize || {};
+    var addons = {
+        ui: {
+            state: {
+                isDrawerOpen: false,
+            },
+            effects: (_a = {},
+                _a[closeDrawer.type] = function (state, action) { return (__assign({}, state)); },
+                _a[openDrawer.type] = function (state, action) { return (__assign(__assign({}, state), { isDrawerOpen: true })); },
+                _a),
+        },
+    };
+    Object.keys(addons).forEach(function (addon) {
+        if (customize[addon]) {
+            var customState = customize[addon].state || {};
+            var customEffects = customize[addon].effects || {};
+            customize[addon].state = __assign(__assign({}, customState), addons[addon].state);
+            customize[addon].effects = __assign(__assign({}, customEffects), addons[addon].effects);
+        }
+        else {
+            customize[addon] = addons[addon];
+        }
+    });
+    reduxConfig.customize = customize;
+    engineConfig.redux = reduxConfig;
+    return import('modular-plugins').then(function (_a) {
+        var modalPlugin = _a.modalPlugin, uiPlugin = _a.uiPlugin, localizationPlugin = _a.localizationPlugin, themerPlugin = _a.themerPlugin, routerPlugin = _a.routerPlugin, urlCheckerPlugin = _a.urlCheckerPlugin, epicsPlugin = _a.epicsPlugin;
+        var plugins = engineConfig.plugins || [];
+        plugins = plugins.concat([
+            modalPlugin,
+            uiPlugin,
+            localizationPlugin,
+            themerPlugin,
+            routerPlugin,
+            urlCheckerPlugin,
+            epicsPlugin,
+        ]);
+        engineConfig.plugins = plugins;
+        var _b = initEngine({ config: engineConfig }), store = _b.store, output = _b.config;
+        return {
+            store: store,
+            config: output,
+        };
+    });
 };
 
 /**
@@ -135,20 +200,6 @@ var ErrorBoundary = /** @class */ (function (_super) {
     };
     return ErrorBoundary;
 }(React.Component));
-
-/**
- * Open modular-engine drawer
- *
- * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
- *
- * @copyright Cataldo Cianciaruso 2022
- */
-var openDrawer = createModularAction("@@ui/OPEN_DRAWER");
-/**
- * Close modular-engine drawer
- *
- */
-var closeDrawer = createModularAction("@@ui/CLOSE_DRAWER");
 
 /**
  * Returns modular-engine drawer visibility
@@ -272,4 +323,4 @@ var createModularApp = function (_a) {
     };
 };
 
-export { closeDrawer, createModularApp, driveWithDarkMode, isDrawerOpen, openDrawer };
+export { closeDrawer, createModularApp, driveWithDarkMode, initModularEngine, isDrawerOpen, openDrawer };
