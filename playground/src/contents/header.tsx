@@ -23,7 +23,7 @@ import {
   setDarkMode,
 } from "modular-plugins";
 
-import { getAppName } from "modular-engine";
+import { getAppName } from "modular-utils";
 import { openDrawer } from "modular-creator-preview";
 import { Button, Dropdown, Link, Toggle } from "modular-ui-components";
 import { useTranslation } from "react-i18next";

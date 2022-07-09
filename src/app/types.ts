@@ -22,7 +22,7 @@ export type AppConfig = {
     content: () => JSX.Element;
 
     /** App Drawer position (relative to the window) */
-    position?: DrawerProps["position"];
+    position?:string;
   };
 
   /** Custom modals object. Keys are the modals types, values are component to render inside the modal, when opened */

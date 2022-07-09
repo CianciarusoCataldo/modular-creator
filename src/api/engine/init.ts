@@ -17,6 +17,7 @@ const initModularEngine = (config?: ModularEngineConfig) => {
       effects: {
         [closeDrawer.type]: (state, action) => ({
           ...state,
+          isDrawerOpen:false
         }),
         [openDrawer.type]: (state, action) => ({
           ...state,
