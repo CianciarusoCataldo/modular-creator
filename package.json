@@ -1,6 +1,6 @@
 {
   "name": "modular-creator",
-  "description": "Create your personal react web-app, in few minutes, and with a lot of configuration options",
+  "description": "Create your personal react web-app, in few minutes, and with a lot of plugins",
   "version": "0.2.0",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -20,10 +20,9 @@
     "url": "git+https://github.com/CianciarusoCataldo/modular-creator.git"
   },
   "peerDependencies": {
-    "modular-engine": "^0.3.1",
-    "modular-plugins": "^0.2.5",
+    "modular-creator-types": "^0.1.0",
     "modular-ui-components": "^1.0.0",
-    "modular-utils": "^0.3.1",
+    "modular-utils": "^0.4.0",
     "react": ">=16 <18",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0"
@@ -49,10 +48,10 @@
     "jest": "^27.4.7",
     "jest-location-mock": "^1.0.9",
     "jest-transform-stub": "^2.0.0",
-    "modular-engine": "^0.3.1",
-    "modular-plugins": "^0.2.5",
+    "modular-creator-types": "^0.1.0",
+    "modular-engine": "^0.4.0",
     "modular-ui-components": "^1.0.0",
-    "modular-utils": "^0.3.1",
+    "modular-utils": "^0.4.0",
     "npm-run-all": "^4.1.5",
     "react": ">=16 <18",
     "react-redux": "^7.2.6",

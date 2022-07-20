@@ -1,9 +1,9 @@
 import Logo from "./icons/commons/logo.png";
 
+import Docs from "./icons/commons/docs.svg";
+
 import DarkMode from "./icons/commons/dark-mode.svg";
 import LightMode from "./icons/commons/light-mode.svg";
-
-import Docs from "./icons/commons/docs.svg";
 
 import IT_FLAG from "./icons/langs/it.svg";
 import FR_FLAG from "./icons/langs/fr.svg";
@@ -11,15 +11,17 @@ import EN_FLAG from "./icons/langs/en.svg";
 import DE_FLAG from "./icons/langs/de.svg";
 import ES_FLAG from "./icons/langs/es.svg";
 
-export const LogoIcon = (
-  <img
-    className="w-12 h-12 short:w-8 short:h-8 xsm:w-16 xsm:h-16 3xl:w-20 3xl:h-20"
-    alt=""
-    src={Logo}
-  />
-);
-
 export const DocsIcon = <img alt="" src={Docs} width={30} height={30} />;
+
+/** App logo */
+export const LogoIcon = <img alt="" src={Logo} width={100} height={100} />;
+
+export const LeftArrowIcon = (
+  <svg className="left-arrow w-8 h-8 xsm:w-12 xsm:h-12" viewBox="0 0 11 18">
+    <path d="M8.681.196l2.121 2.12-8.484 8.487-2.12-2.12z" />
+    <path d="M10.803 15.047l-2.121 2.121L.197 8.683l2.121-2.121z" />
+  </svg>
+);
 
 export const BurgerIcon = (
   <svg

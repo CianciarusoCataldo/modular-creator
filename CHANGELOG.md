@@ -1,7 +1,9 @@
-# Modular changelog
+# Modular-creator changelog
 
 ## Versions
 
+- [0.3.0](#030)
+- [0.2.0](#020)
 - [0.1.0](#010)
 
 <br>
@@ -9,6 +11,22 @@
 ---
 
 ## Changes
+
+<br>
+
+### 0.3.0
+
+- Shared type definitions
+- Plugins support
+- Better modular-engine integration
+- Standardized init process
+
+<br>
+
+### 0.2.0
+
+- Different input prameters
+- cleanup
 
 <br>
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import { mount } from "enzyme";
 
-import AppErrorBoundary from "../../../src/app/components/AppErrorBoundary";
+import AppErrorBoundary from "../../../src/api/components/AppErrorBoundary";
 
 const AppErrorBoundaryTest = () => {
   describe("\n     AppErrorBoundary\n", () => {

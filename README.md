@@ -9,7 +9,7 @@
 
 <br>
 
-Create your personal react web-app, in few minutes, and with a lot of configuration options
+Create your personal react web-app, in few minutes, and with a lot of plugins
 
 <br>
 
@@ -19,7 +19,6 @@ Create your personal react web-app, in few minutes, and with a lot of configurat
 
 - [Getting started](#getting-started)
   - [Installation](#installation)
-- [Tests](#tests)
 - [Included libraries](#included-libraries)
 - [Authors](#authors)
 - [License](#license)
@@ -40,22 +39,12 @@ npm i modular-creator
 
 <br>
 
----
-
-## Tests
-
-Unit tests for every lib function are located inside `tests` folder. The test script is executed with pre-defined test command:
-
-```sh
-npm run test
-```
 
 ---
 
 ## Included libraries
 
 - [Modular-ui-components](https://github.com/CianciarusoCataldo/modular-ui-components) - for UI components
-- [Modular-engine](https://github.com/CianciarusoCataldo/modular-engine) - for enhanced global state, powered with plugins
 - Modular-creator is written entirely with [Typescript](https://www.typescriptlang.org/)
 
 <br>

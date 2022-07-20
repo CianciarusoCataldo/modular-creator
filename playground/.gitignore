@@ -8,7 +8,6 @@
 
 # production
 /build
-/gzipped
 
 #auto generated styles
 /src/assets/styles/styles.output.css
@@ -24,5 +23,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/src/modular-creator-preview

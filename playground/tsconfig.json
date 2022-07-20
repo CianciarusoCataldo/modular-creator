@@ -17,5 +17,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "files": [
+    "src/api/core/types.ts",
+    "src/api/modular-creator-types/index.ts",
+    "src/api/plugins/**/types.ts"
+  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

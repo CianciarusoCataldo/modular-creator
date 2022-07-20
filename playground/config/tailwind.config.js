@@ -5,8 +5,7 @@ module.exports = {
   presets: [],
   theme: {
     screens: {
-      xxsm: "425px",
-      xsm: "512px",
+      xsm: "425",
       sm: "640px",
       md: "768px",
       lg: "1024px",
@@ -14,7 +13,6 @@ module.exports = {
       "2xl": "1536px",
       "3xl": "1920px",
       "4xl": "2536px",
-      short: { raw: "(max-height: 800px)" },
     },
     colors: {
       transparent: "transparent",

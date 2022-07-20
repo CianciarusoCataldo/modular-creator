@@ -1,16 +1,41 @@
+import { closeDrawer, openDrawer } from "./app/actions";
+import plugins from "./engine-plugins";
+
 const engineConfig = {
   appName: "Modular-creator",
+  debug: false,
+  plugins,
+  redux: {
+    customize: {
+      ui: {
+        state: {
+          isDrawerOpen: false,
+        },
+        effects: {
+          [closeDrawer.type]: (state, action) => ({
+            ...state,
+            isDrawerOpen: false,
+          }),
+          [openDrawer.type]: (state, action) => ({
+            ...state,
+            isDrawerOpen: true,
+          }),
+        },
+      },
+    },
+  },
   router: {
     basename: "/modular-creator",
     homePage: "HomePage",
     routes: {
       HomePage: "/",
-      TestPage: "/test",
     },
   },
-  i18n: {
+  localization: {
     fallbackLanguage: "en",
     supportedLanguages: ["en", "it", "es", "fr", "de"],
+    namespaces: ["common", "homepage"],
+    defaultNamespace: "common",
     loadPath: "/modular-creator/locales/{{lng}}/{{ns}}.json",
     titlesNamespace: "pages",
   },
