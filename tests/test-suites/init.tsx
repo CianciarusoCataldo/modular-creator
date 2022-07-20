@@ -36,37 +36,72 @@ const runTest = (store: ModularEngineStore) => {
         }),
         component: () => <div />,
         internal: false,
-        format: (creatorConfig, enabledPlugins) => null,
+        format: () => null,
       }),
     ],
   };
 
   describe("\n   initApplication\n", () => {
-    test("init with empty config", () => {
+    test("init without parameters", () => {
       process.env.NODE_ENV === "development";
-      mount(initModularCreator({}));
+      mount(initModularCreator().App);
+    });
+
+    test("init without any config", () => {
+      process.env.NODE_ENV === "development";
 
       mount(
         initModularCreator({
           store,
-        })
+        }).App
       );
+    });
+
+    test("init without a store", () => {
+      process.env.NODE_ENV === "development";
+      mount(
+        initModularCreator({
+          creatorConfig: {
+            preloader: () => <div />,
+            header: () => <div />,
+            footer: () => <div />,
+            content: () => <div />,
+            error: () => <div />,
+          },
+        }).App
+      );
+
+      mount(
+        initModularCreator({
+          creatorConfig: {
+            header: () => <div />,
+            footer: () => <div />,
+            content: () => <div />,
+            error: () => <div />,
+          },
+        }).App
+      );
+    });
+
+    test("init with an empty config", () => {
+      process.env.NODE_ENV === "development";
 
       mount(
         initModularCreator({
           store,
           creatorConfig: {},
-        })
+        }).App
       );
     });
     test("init with defined config", () => {
       process.env.NODE_ENV === "development";
+
       mount(
         initModularCreator({
           store,
           creatorConfig: appConfig,
           engineConfig: {},
-        })
+        }).App
       );
     });
   });

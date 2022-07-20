@@ -30,7 +30,7 @@ const AppErrorBoundaryTest = () => {
 
       const wrapper = mount(ComponentToTest);
 
-      wrapper.find(".error-button").at(1).simulate("click");
+      wrapper.find(".error-button").simulate("click");
       console.error = error;
       expect(wrapper);
     });

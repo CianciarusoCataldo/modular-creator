@@ -1,7 +1,7 @@
 {
   "name": "modular-creator",
   "description": "Create your personal react web-app, in few minutes, and with a lot of plugins",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
@@ -21,11 +21,8 @@
   },
   "peerDependencies": {
     "modular-creator-types": "^0.1.0",
-    "modular-ui-components": "^1.0.0",
-    "modular-utils": "^0.4.0",
     "react": ">=16 <18",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^5.2.0"
+    "react-redux": "^7.2.6"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.17.0",
@@ -50,12 +47,9 @@
     "jest-transform-stub": "^2.0.0",
     "modular-creator-types": "^0.1.0",
     "modular-engine": "^0.4.0",
-    "modular-ui-components": "^1.0.0",
-    "modular-utils": "^0.4.0",
     "npm-run-all": "^4.1.5",
     "react": ">=16 <18",
     "react-redux": "^7.2.6",
-    "react-router-dom": "^5.2.0",
     "rollup": "^2.66.1",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-banner2": "^1.2.2",

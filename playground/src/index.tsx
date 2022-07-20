@@ -27,10 +27,10 @@ import("modular-engine").then(({ initEngine }) => {
 import("modular-creator-preview").then(({ initModularCreator }) => {
   import("./app.config").then(({ default: creatorConfig }) => {
     ModularApp = (args: any) =>
-    initModularCreator({
+      initModularCreator({
         ...args,
         creatorConfig: creatorConfig,
-      });
+      }).App;
   });
 });
 
@@ -41,7 +41,6 @@ const check = () => {
         ModularApp({
           store: engineParams.store,
           engineConfig: engineParams.config,
-          enginePlugins: engineParams.enabledPlugins,
         }),
         document.getElementById("root"),
         () => {

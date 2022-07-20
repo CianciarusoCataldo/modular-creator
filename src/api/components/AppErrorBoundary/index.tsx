@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Button } from "modular-ui-components";
-
-/** Modular error boundary, wrap all App components to intercept most of the errors thrown
+/** {@link https://github.com/CianciarusoCataldo/modular-creator modular-creator} error boundary, wrap all App components to intercept most of the errors thrown
  *
  * @param {() => JSX.Element} fallback custom fallback displayed when an error is catched
+ *
+ * @see https://cianciarusocataldo.github.io/modular-creator/docs
  *
  * @author Cataldo Cianciaruso <https://github.com/CianciarusoCataldo>
  *
@@ -43,7 +43,7 @@ class ErrorBoundary extends React.Component<
             }}
           >
             <div style={{ margin: "auto" }}>
-              <Button
+              <button
                 style={{ fontSize: "3rem", padding: "1rem" }}
                 className="error-button"
                 onClick={() => {
@@ -51,7 +51,7 @@ class ErrorBoundary extends React.Component<
                 }}
               >
                 Try again
-              </Button>
+              </button>
             </div>
           </div>
         )

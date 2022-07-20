@@ -19,9 +19,9 @@ export const formatConfig = (
 
 export const parsePlugins = (
   creatorConfig: ModularCreatorConfig,
-  engineConfig: ModularEngineConfig
+  engineConfig?: ModularEngineConfig
 ) => {
-  let creator = formatConfig(creatorConfig);
+  let creator = { ...creatorConfig };
 
   let plugins = creator.plugins;
   let enabledPlugins: string[] = [];
@@ -56,7 +56,7 @@ export const parsePlugins = (
     pluginOutput.format && formatters.push(pluginOutput.format);
   });
 
-  if (creator.core.engineSync) {
+  if (creator.core.engineSync && engineConfig) {
     creator = creator.core.engineSync(creator, engineConfig, enabledPlugins);
   }
 
