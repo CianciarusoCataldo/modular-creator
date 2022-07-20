@@ -9,7 +9,7 @@
 
 <br>
 
-Create your personal react web-app, in few minutes, and with a lot of configuration options
+Create your personal react web-app, in few minutes, and with a lot of plugins
 
 <br>
 

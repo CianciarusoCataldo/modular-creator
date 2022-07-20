@@ -16,8 +16,8 @@
 
 ### 0.3.0
 
-- Shared tye definitions
-- Plugin support
+- Shared type definitions
+- Plugins support
 - Better modular-engine integration
 - Standardized init process
 
